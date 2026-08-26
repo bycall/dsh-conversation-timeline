@@ -1,5 +1,5 @@
 # dshmarket submission entry for dsh-conversation-timeline.
-# Copy to <fork-of-awesome-dsh-plugin>/data/plugins/<your-github-owner>__dsh-conversation-timeline.yml
+# Copy to <fork-of-awesome-dsh-plugin>/data/plugins/bycall__dsh-conversation-timeline.yml
 # and open a PR against https://github.com/awesome-dsh-plugin/awesome-dsh-plugin.
 #
 # Rules enforced by CI (pr-gate.yml / check-submission.mjs):
@@ -8,7 +8,7 @@
 #   - filename must equal slugFor(url): <owner>__<repo>.yml
 #   - only keys: url, name, category, description, tarball (no `npm:` key — npm
 #     mapping is resolved automatically from the repository)
-url: https://github.com/<your-github-owner>/dsh-conversation-timeline
+url: https://github.com/bycall/dsh-conversation-timeline
 name: dsh-conversation-timeline
 category: ui
 description:

@@ -16,9 +16,9 @@
 ```bash
 cd /Users/bycall/Downloads/workbuddy/Claw/dsh-conversation-timeline
 # 1) 在 github.com 新建同名空仓库 dsh-conversation-timeline（不要勾选 README/gitignore）
-# 2) 替换 package.json 中 repository 字段的 <your-github-owner> 为你的用户名
+# 2) 替换 package.json 中 repository 字段的 bycall 为你的用户名
 # 3) 推送
-git remote add origin git@github.com:<your-github-owner>/dsh-conversation-timeline.git
+git remote add origin git@github.com:bycall/dsh-conversation-timeline.git
 git push -u origin main
 ```
 
@@ -41,7 +41,7 @@ npm publish                      # 包名 dsh-conversation-timeline（已确认�
 ## 3. 提交市场收录条目（PR）
 
 1. fork `https://github.com/awesome-dsh-plugin/awesome-dsh-plugin`；
-2. 在 fork 的 `data/plugins/` 下新增 `<your-github-owner>__dsh-conversation-timeline.yml`
+2. 在 fork 的 `data/plugins/` 下新增 `bycall__dsh-conversation-timeline.yml`
    （内容见 `release/dshmarket-submission.yml`，**把 owner 替换为实际值**）；
 3. 发起 PR 到 main 分支——CI（`pr-gate.yml`）会自动校验 dsh.bundle / 仓库年龄 / commit 数；
 4. 合并后，市场 `plugins.json` 由 CI 每日刷新，通常 **1 天内** 在插件市场可搜到。

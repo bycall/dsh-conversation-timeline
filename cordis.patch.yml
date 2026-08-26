@@ -1,0 +1,7 @@
+# dsh-conversation-timeline bundle patch: mounts the plugin into a profile's
+# layer stack. All functionality ships in the client bundle (declared by
+# dsh.client in package.json) — this server entry exists so the cordis loader
+# can mount the bundle entry declared by the profile's bundle list.
+- insert:
+    - id: conversation-timeline
+      name: 'dsh-conversation-timeline'

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>dsh-conversation-timeline 样式预览</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 24px 64px;
+    background: #f4f6f9; color: #1b2434;
+    font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+  .page-title { font-size: 18px; font-weight: 600; }
+  .page-desc { font-size: 13px; color: #5d6b80; line-height: 1.7; }
+  .section-title { font-size: 13px; font-weight: 600; color: #8a94a3; letter-spacing: .6px; margin-bottom: 10px; }
+  .stage { background: #fff; border: 1px solid rgba(23,32,51,.08); border-radius: 14px; padding: 18px; }
+  .stage-note { font-size: 12px; color: #8a94a3; margin-top: 10px; }
+  .composer-sim { max-width: var(--dsh-composer-card-max-width, 780px); margin: 8px auto 0; height: 52px; display: flex; align-items: center; padding: 0 18px; background: #fff; border: 1px solid rgba(23,32,51,.12); border-radius: 22px; color: #8a94a3; font-size: 14px; }
+  .msg-sim { max-width: var(--dsh-chat-content-width, 748px); margin: 14px auto 0; height: 38px; display: flex; align-items: center; padding: 0 14px; background: #f2f4f8; border-radius: 10px; color: #5d6b80; font-size: 12px; }
+</style>
+<style>
+@keyframes dctl-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.dctl-dock{box-sizing:border-box;display:flex;align-items:center;gap:12px;min-height:42px;padding:6px 14px;background:#fff;border:1px solid rgba(23,32,51,.08);border-radius:12px;max-width:var(--dsh-chat-content-width,748px);margin:0 auto}
+.dctl-dockTitle{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#5d6b80;white-space:nowrap}
+.dctl-dockTitle::before{content:'';width:3px;height:13px;border-radius:2px;background:#4f6ef7}
+.dctl-dockChips{flex:1;min-width:0;display:flex;align-items:center;gap:8px;overflow-x:auto;padding:4px 2px;scrollbar-width:thin}
+.dctl-dockLink{flex:none;width:10px;height:1.5px;border-radius:1px;background:rgba(23,32,51,.15)}
+.dctl-dockChip{position:relative;flex:none;display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(23,32,51,.1);background:#f8f9fc;border-radius:14px;padding:4px 11px;cursor:pointer;font-family:inherit;color:#1b2434;transition:border-color .15s ease,background .15s ease,transform .12s ease}
+.dctl-dockChip:hover{background:#fff;border-color:rgba(79,110,247,.45);transform:translateY(-1px)}
+.dctl-dockTipFixed{position:fixed;transform:translate(-50%,calc(-100% - 10px));max-width:340px;width:max-content;min-width:120px;background:#1b2434;color:#f4f6f9;font-size:12px;line-height:1.55;border-radius:9px;padding:7px 11px;z-index:2147483000;box-shadow:0 6px 22px rgba(23,32,51,.2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left;pointer-events:none}
+.dctl-dockTipFixed::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1b2434}
+.dctl-dockChipActive{border-color:#4f6ef7;background:rgba(79,110,247,.08);box-shadow:0 0 0 1px #4f6ef7 inset}
+.dctl-dockDot{flex:none;width:8px;height:8px;border-radius:50%;background:#b4b2a9}
+.dctl-dockChipRunning .dctl-dockDot{background:#19b39b;animation:dctl-pulse 1.2s ease-in-out infinite}
+.dctl-dockChipError .dctl-dockDot{background:#d6405f}
+.dctl-dockTurn{font-size:12px;font-weight:600}
+.dctl-dockTime{font-size:11px;color:#8a94a3;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <div class="page-title">dsh-conversation-timeline · 样式预览</div>
+    <div class="page-desc">浅色扁平主题，主强调色 #4f6ef7。模拟数据渲染的 dock 时间线横条，样式与插件运行时完全一致。运行态节点带脉冲动画，当前轮次高亮。</div>
+  </div>
+
+  <div>
+    <div class="section-title">一 · 嵌入对话流的 dock 横条（输入框上方）</div>
+    <div class="stage preview">
+      <div class="dctl-dock">
+        <span class="dctl-dockTitle">时间线</span>
+        <div class="dctl-dockChips">
+          <button type="button" class="dctl-dockChip" data-tip="分析一下 leads_pool 表 channel 5 的重复线索分布，按 distribute_count 分组统计"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 1 轮</span><span class="dctl-dockTime">09:12:05</span></button>
+          <span class="dctl-dockLink"></span>
+          <button type="button" class="dctl-dockChip dctl-dockChipActive dctl-dockChipRunning" data-tip="继续：给出相关性分析假设与验证结论"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 2 轮</span><span class="dctl-dockTime">09:14:40</span></button>
+          <span class="dctl-dockLink"></span>
+          <button type="button" class="dctl-dockChip dctl-dockChipError" data-tip="用 Python 复现一遍统计结果"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 3 轮</span><span class="dctl-dockTime">09:16:22</span></button>
+          <span class="dctl-dockLink"></span>
+          <button type="button" class="dctl-dockChip" data-tip="/compact 压缩上下文后继续"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 4 轮</span><span class="dctl-dockTime">09:20:11</span></button>
+        </div>
+      </div>
+      <div class="msg-sim">模拟消息文本列（748px）—— dock 左右与它对齐</div>
+      <div class="composer-sim">输入消息…</div>
+      <div class="stage-note">dock 横条的左右边缘与<b>文本显示宽度</b>（`--dsh-chat-content-width`，748px）严格对齐；输入框卡片为 780px（= 文本宽 + 两侧各 16px 留白，dsh 原生行为）。胶囊节点 = 轮次（圆点状态色：灰=完成 / 绿=运行脉冲 / 红=出错），节点间细连接线串成时间链；hover 微抬升；<b>鼠标悬停任意轮次弹出该轮用户提示词气泡</b>（portal 到页面根部的 fixed 气泡 + 箭头，最长 2 行，不受横向滚动容器裁剪）。</div>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var tip = null;
+    function show(e) {
+      var chip = e.currentTarget;
+      var text = chip.getAttribute("data-tip");
+      if (!text) return;
+      if (!tip) {
+        tip = document.createElement("div");
+        tip.className = "dctl-dockTipFixed";
+        document.body.appendChild(tip);
+      }
+      var rect = chip.getBoundingClientRect();
+      tip.textContent = text;
+      tip.style.left = Math.round(rect.left + rect.width / 2) + "px";
+      tip.style.top = Math.round(rect.top) + "px";
+    }
+    function hide() {
+      if (tip) tip.remove();
+      tip = null;
+    }
+    document.querySelectorAll(".dctl-dockChip").forEach(function (chip) {
+      chip.addEventListener("mouseenter", show);
+      chip.addEventListener("mouseleave", hide);
+    });
+  })();
+</script>
+</body>
+</html>

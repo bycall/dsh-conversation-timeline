@@ -8,6 +8,11 @@
   },
   "type": "module",
   "main": "lib/index.js",
+  "scripts": {
+    "test": "node test/smoke.cjs",
+    "check": "node --check lib/client.js && node --check lib/index.js",
+    "prepack": "node --check lib/client.js && node --check lib/index.js && node test/smoke.cjs"
+  },
   "exports": {
     ".": {
       "default": "./lib/index.js"

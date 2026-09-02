@@ -36,7 +36,37 @@ if (!loaded || typeof loaded.factory !== "function") {
 // Materialize the factory with a require() that resolves "react" from the
 // dsh CLI's bundled react; "react-dom" gets a minimal stub (createPortal is
 // only exercised at render time, which this smoke test never reaches).
-const reactPath = "/Users/bycall/.workbuddy/binaries/node/versions/22.22.2/lib/node_modules/@deepseek-ai/dsh/node_modules/react";
+// The bundled react lives inside the managed dsh install, whose path changes
+// across node upgrades — resolve it defensively: env override → scan the
+// managed versions dir → legacy fallback → require.resolve("react").
+function resolveReactPath() {
+  if (process.env.DSH_REACT_PATH) return process.env.DSH_REACT_PATH;
+  const candidates = [];
+  const versionsDir = "/Users/bycall/.workbuddy/binaries/node/versions";
+  if (fs.existsSync(versionsDir)) {
+    for (const v of fs.readdirSync(versionsDir)) {
+      candidates.push(
+        path.join(versionsDir, v, "lib", "node_modules", "@deepseek-ai", "dsh", "node_modules", "react")
+      );
+    }
+  }
+  candidates.push(
+    "/Users/bycall/.workbuddy/binaries/node/versions/22.22.2/lib/node_modules/@deepseek-ai/dsh/node_modules/react"
+  );
+  for (const c of candidates) {
+    if (fs.existsSync(c)) return c;
+  }
+  try {
+    return require.resolve("react");
+  } catch (e) {}
+  return null;
+}
+
+const reactPath = resolveReactPath();
+if (!reactPath) {
+  console.error("FAIL: could not resolve the dsh bundled react. Set DSH_REACT_PATH to its absolute path.");
+  process.exit(1);
+}
 const requireFn = (spec) => {
   if (spec === "react") return require(reactPath);
   if (spec === "react/jsx-runtime") return require(reactPath + "/jsx-runtime");

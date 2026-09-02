@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="zh-CN" data-page-node-id="W4nW2SbhUNyskJqZQZsMtu">
+<head data-page-node-id="dAkDavYVQx2dIVl5mAHxlF">
+<meta charset="utf-8" data-page-node-id="ALlaMqJO6U0Oz455DicIN6" />
+<meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="y3JZclqRpTT2bvwkwpiTfz" />
 <title>dsh-conversation-timeline 样式预览</title>
 <style>
   * { box-sizing: border-box; }
@@ -22,48 +22,53 @@
 </style>
 <style>
 @keyframes dctl-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
-.dctl-dock{box-sizing:border-box;display:flex;align-items:center;gap:12px;min-height:42px;padding:6px 14px;background:#fff;border:1px solid rgba(23,32,51,.08);border-radius:12px;max-width:var(--dsh-chat-content-width,748px);margin:0 auto}
-.dctl-dockTitle{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#5d6b80;white-space:nowrap}
-.dctl-dockTitle::before{content:'';width:3px;height:13px;border-radius:2px;background:#4f6ef7}
+:root{--dctl-bg:#fff;--dctl-border:rgba(23,32,51,.08);--dctl-title:#5d6b80;--dctl-accent:#4f6ef7;--dctl-chip-bg:#f8f9fc;--dctl-chip-border:rgba(23,32,51,.1);--dctl-chip-text:#1b2434;--dctl-link:rgba(23,32,51,.15);--dctl-chip-hover-bg:#fff;--dctl-chip-hover-border:rgba(79,110,247,.45);--dctl-active-bg:rgba(79,110,247,.08);--dctl-dot-idle:#b4b2a9;--dctl-time:#8a94a3;--dctl-tip-bg:#1b2434;--dctl-tip-text:#f4f6f9;--dctl-tip-arrow:#1b2434;--dctl-shadow:rgba(23,32,51,.2)}
+@media (prefers-color-scheme: dark){:root{--dctl-bg:#1e2636;--dctl-border:rgba(255,255,255,.1);--dctl-title:#9aa6b8;--dctl-accent:#4f6ef7;--dctl-chip-bg:#262f40;--dctl-chip-border:rgba(255,255,255,.12);--dctl-chip-text:#e8ecf3;--dctl-link:rgba(255,255,255,.16);--dctl-chip-hover-bg:#2b3547;--dctl-chip-hover-border:rgba(79,110,247,.55);--dctl-active-bg:rgba(79,110,247,.16);--dctl-dot-idle:#7b8294;--dctl-time:#8a94a3;--dctl-tip-bg:#e9edf4;--dctl-tip-text:#1b2434;--dctl-tip-arrow:#e9edf4;--dctl-shadow:rgba(0,0,0,.35)}}
+:root.dctl-theme-dark{--dctl-bg:#1e2636;--dctl-border:rgba(255,255,255,.1);--dctl-title:#9aa6b8;--dctl-accent:#4f6ef7;--dctl-chip-bg:#262f40;--dctl-chip-border:rgba(255,255,255,.12);--dctl-chip-text:#e8ecf3;--dctl-link:rgba(255,255,255,.16);--dctl-chip-hover-bg:#2b3547;--dctl-chip-hover-border:rgba(79,110,247,.55);--dctl-active-bg:rgba(79,110,247,.16);--dctl-dot-idle:#7b8294;--dctl-time:#8a94a3;--dctl-tip-bg:#e9edf4;--dctl-tip-text:#1b2434;--dctl-tip-arrow:#e9edf4;--dctl-shadow:rgba(0,0,0,.35)}
+.dctl-dock{box-sizing:border-box;display:flex;align-items:center;gap:12px;min-height:42px;padding:6px 14px;background:var(--dctl-bg);border:1px solid var(--dctl-border);border-radius:12px;max-width:var(--dsh-chat-content-width,748px);margin:0 auto}
+.dctl-dockTitle{flex:none;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--dctl-title);white-space:nowrap}
+.dctl-dockTitle::before{content:'';width:3px;height:13px;border-radius:2px;background:var(--dctl-accent)}
 .dctl-dockChips{flex:1;min-width:0;display:flex;align-items:center;gap:8px;overflow-x:auto;padding:4px 2px;scrollbar-width:thin}
-.dctl-dockLink{flex:none;width:10px;height:1.5px;border-radius:1px;background:rgba(23,32,51,.15)}
-.dctl-dockChip{position:relative;flex:none;display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(23,32,51,.1);background:#f8f9fc;border-radius:14px;padding:4px 11px;cursor:pointer;font-family:inherit;color:#1b2434;transition:border-color .15s ease,background .15s ease,transform .12s ease}
-.dctl-dockChip:hover{background:#fff;border-color:rgba(79,110,247,.45);transform:translateY(-1px)}
-.dctl-dockTipFixed{position:fixed;transform:translate(-50%,calc(-100% - 10px));max-width:340px;width:max-content;min-width:120px;background:#1b2434;color:#f4f6f9;font-size:12px;line-height:1.55;border-radius:9px;padding:7px 11px;z-index:2147483000;box-shadow:0 6px 22px rgba(23,32,51,.2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left;pointer-events:none}
-.dctl-dockTipFixed::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1b2434}
-.dctl-dockChipActive{border-color:#4f6ef7;background:rgba(79,110,247,.08);box-shadow:0 0 0 1px #4f6ef7 inset}
-.dctl-dockDot{flex:none;width:8px;height:8px;border-radius:50%;background:#b4b2a9}
+.dctl-dockLink{flex:none;width:10px;height:1.5px;border-radius:1px;background:var(--dctl-link)}
+.dctl-dockChip{position:relative;flex:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--dctl-chip-border);background:var(--dctl-chip-bg);border-radius:14px;padding:4px 11px;cursor:pointer;font-family:inherit;color:var(--dctl-chip-text);transition:border-color .15s ease,background .15s ease,transform .12s ease}
+.dctl-dockChip:hover{background:var(--dctl-chip-hover-bg);border-color:var(--dctl-chip-hover-border);transform:translateY(-1px)}
+.dctl-dockTipFixed{position:fixed;transform:translate(-50%,calc(-100% - 10px));max-width:340px;width:max-content;min-width:120px;background:var(--dctl-tip-bg);color:var(--dctl-tip-text);font-size:12px;line-height:1.55;border-radius:9px;padding:7px 11px;z-index:2147483000;box-shadow:0 6px 22px var(--dctl-shadow);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:left;pointer-events:none}
+.dctl-dockTipFixed::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--dctl-tip-arrow)}
+.dctl-dockChipActive{border-color:var(--dctl-accent);background:var(--dctl-active-bg);box-shadow:0 0 0 1px var(--dctl-accent) inset}
+.dctl-dockDot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--dctl-dot-idle)}
 .dctl-dockChipRunning .dctl-dockDot{background:#19b39b;animation:dctl-pulse 1.2s ease-in-out infinite}
 .dctl-dockChipError .dctl-dockDot{background:#d6405f}
 .dctl-dockTurn{font-size:12px;font-weight:600}
-.dctl-dockTime{font-size:11px;color:#8a94a3;font-variant-numeric:tabular-nums}
+.dctl-dockTime{font-size:11px;color:var(--dctl-time);font-variant-numeric:tabular-nums}
+.dctl-toggle{margin-left:auto;flex:none;border:1px solid rgba(23,32,51,.12);background:#fff;color:#1b2434;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:inherit}
+.dctl-toggle:hover{border-color:rgba(79,110,247,.5)}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <div>
-    <div class="page-title">dsh-conversation-timeline · 样式预览</div>
-    <div class="page-desc">浅色扁平主题，主强调色 #4f6ef7。模拟数据渲染的 dock 时间线横条，样式与插件运行时完全一致。运行态节点带脉冲动画，当前轮次高亮。</div>
+<body data-page-node-id="inxcFBmul7WtIJJrO5lXu5">
+<div class="wrap" data-page-node-id="HJKDXdMoZvEryki4AaDOYk">
+  <div data-page-node-id="zSW4AVuDIpNFcrFPqqTZaR">
+    <div class="page-title" data-page-node-id="lNLjjvEKn5WxiRYRf4KGER">dsh-conversation-timeline · 样式预览</div>
+    <div class="page-desc" data-page-node-id="X5aKr3GowrPLmokjfpMGvd">浅色 / 深色自适应扁平主题，主强调色 #4f6ef7。模拟数据渲染的 dock 时间线横条，样式与插件运行时完全一致（含深色模式）。运行态节点带脉冲动画，当前轮次高亮。点右上「切换深色」可预览深色效果。</div>
   </div>
 
-  <div>
-    <div class="section-title">一 · 嵌入对话流的 dock 横条（输入框上方）</div>
-    <div class="stage preview">
-      <div class="dctl-dock">
-        <span class="dctl-dockTitle">时间线</span>
-        <div class="dctl-dockChips">
-          <button type="button" class="dctl-dockChip" data-tip="分析一下 leads_pool 表 channel 5 的重复线索分布，按 distribute_count 分组统计"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 1 轮</span><span class="dctl-dockTime">09:12:05</span></button>
-          <span class="dctl-dockLink"></span>
-          <button type="button" class="dctl-dockChip dctl-dockChipActive dctl-dockChipRunning" data-tip="继续：给出相关性分析假设与验证结论"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 2 轮</span><span class="dctl-dockTime">09:14:40</span></button>
-          <span class="dctl-dockLink"></span>
-          <button type="button" class="dctl-dockChip dctl-dockChipError" data-tip="用 Python 复现一遍统计结果"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 3 轮</span><span class="dctl-dockTime">09:16:22</span></button>
-          <span class="dctl-dockLink"></span>
-          <button type="button" class="dctl-dockChip" data-tip="/compact 压缩上下文后继续"><span class="dctl-dockDot"></span><span class="dctl-dockTurn">第 4 轮</span><span class="dctl-dockTime">09:20:11</span></button>
+  <div data-page-node-id="2PJ6bNBn18AWhYYiKKH80B">
+    <div class="section-title" data-page-node-id="LIcByhR2zLSotcp2SCFDdo">一 · 嵌入对话流的 dock 横条（输入框上方） <button type="button" class="dctl-toggle" id="themeToggle" data-page-node-id="zvYrKv30YAPIxTLxpcNDm8">切换深色</button></div>
+    <div class="stage preview" data-page-node-id="wR8ShzNqEZfWz33IasUONy">
+      <div class="dctl-dock" data-page-node-id="oIIqyFBbOjnJnX9rsSvDtp">
+        <span class="dctl-dockTitle" data-page-node-id="wjB3XO8hRWkKWjRHlfuwnN">时间线</span>
+        <div class="dctl-dockChips" data-page-node-id="PY171sdqvfpxPf3gc8HDAP">
+          <button type="button" class="dctl-dockChip" data-tip="分析一下 leads_pool 表 channel 5 的重复线索分布，按 distribute_count 分组统计" data-page-node-id="POFwQ6jao7fJaCCaEyhN5i"><span class="dctl-dockDot" data-page-node-id="gltUC2UUA3E9kSnMwXPzDr"></span><span class="dctl-dockTurn" data-page-node-id="Hw1bu7J411Do08lvrzXVcd">第 1 轮</span><span class="dctl-dockTime" data-page-node-id="FljEGjXATMaz2Gfhgp2G1u">09:12:05</span></button>
+          <span class="dctl-dockLink" data-page-node-id="PjDovGOCrKKlAcaUpsAMPh"></span>
+          <button type="button" class="dctl-dockChip dctl-dockChipActive dctl-dockChipRunning" data-tip="继续：给出相关性分析假设与验证结论" data-page-node-id="VBOvO81BsBW38EAhkKT3Ks"><span class="dctl-dockDot" data-page-node-id="mJ2Yg29vpvk39QF9ug1tCR"></span><span class="dctl-dockTurn" data-page-node-id="lVnqFXM9BiSRCfvkFsj1nE">第 2 轮</span><span class="dctl-dockTime" data-page-node-id="nPR0eJtkHV82JgUDG2CDHb">09:14:40</span></button>
+          <span class="dctl-dockLink" data-page-node-id="BZ7OnFFCJHuGP2GF16jj8D"></span>
+          <button type="button" class="dctl-dockChip dctl-dockChipError" data-tip="用 Python 复现一遍统计结果" data-page-node-id="EVeOjzXIFYrx3RYXnERi48"><span class="dctl-dockDot" data-page-node-id="w8yCtHqQUnqW9NMdwQgVUk"></span><span class="dctl-dockTurn" data-page-node-id="nkumXAptHi4ggJB2BDBqzD">第 3 轮</span><span class="dctl-dockTime" data-page-node-id="tmEDytSUYRTbRqsSuxfblz">09:16:22</span></button>
+          <span class="dctl-dockLink" data-page-node-id="7D1rde0rveNC15jsfKbBI3"></span>
+          <button type="button" class="dctl-dockChip" data-tip="/compact 压缩上下文后继续" data-page-node-id="HE58hIhiBlPfk1bEQglzzd"><span class="dctl-dockDot" data-page-node-id="KS39wOegt3QM1PyRmsYqQ0"></span><span class="dctl-dockTurn" data-page-node-id="iHJwa2DU9ysZYjMb9t8DTo">第 4 轮</span><span class="dctl-dockTime" data-page-node-id="CCZXIfxDbBp6AdigqgSv5B">09:20:11</span></button>
         </div>
       </div>
-      <div class="msg-sim">模拟消息文本列（748px）—— dock 左右与它对齐</div>
-      <div class="composer-sim">输入消息…</div>
-      <div class="stage-note">dock 横条的左右边缘与<b>文本显示宽度</b>（`--dsh-chat-content-width`，748px）严格对齐；输入框卡片为 780px（= 文本宽 + 两侧各 16px 留白，dsh 原生行为）。胶囊节点 = 轮次（圆点状态色：灰=完成 / 绿=运行脉冲 / 红=出错），节点间细连接线串成时间链；hover 微抬升；<b>鼠标悬停任意轮次弹出该轮用户提示词气泡</b>（portal 到页面根部的 fixed 气泡 + 箭头，最长 2 行，不受横向滚动容器裁剪）。</div>
+      <div class="msg-sim" data-page-node-id="1Tkmz8LLTs7UdipsQgnYkT">模拟消息文本列（748px）—— dock 左右与它对齐</div>
+      <div class="composer-sim" data-page-node-id="XQve1BU78ocwdw0PqiQPRC">输入消息…</div>
+      <div class="stage-note" data-page-node-id="LaShLh1WZFw2FpXdrM0aDa">dock 横条的左右边缘与<b data-page-node-id="M2ATahzmY9SfmGngCQtV8J">文本显示宽度</b>（`--dsh-chat-content-width`，748px）严格对齐；输入框卡片为 780px（= 文本宽 + 两侧各 16px 留白，dsh 原生行为）。胶囊节点 = 轮次（圆点状态色：灰=完成 / 绿=运行脉冲 / 红=出错），节点间细连接线串成时间链；hover 微抬升；<b data-page-node-id="j2JriVGlTTiGUzx6QmPdgd">鼠标悬停任意轮次弹出该轮用户提示词气泡</b>（portal 到页面根部的 fixed 气泡 + 箭头，最长 2 行，不受横向滚动容器裁剪）。</div>
     </div>
   </div>
 </div>
@@ -92,6 +97,14 @@
       chip.addEventListener("mouseenter", show);
       chip.addEventListener("mouseleave", hide);
     });
+
+    var toggle = document.getElementById("themeToggle");
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        var dark = document.documentElement.classList.toggle("dctl-theme-dark");
+        toggle.textContent = dark ? "切换浅色" : "切换深色";
+      });
+    }
   })();
 </script>
 </body>

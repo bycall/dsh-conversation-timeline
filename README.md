@@ -14,8 +14,14 @@ DeepSeek Harness（dsh）对话时间线插件：把当前会话渲染成**带�
 
 ## 安装
 
+### 方式一：插件市场（发布后推荐）
+
+插件收录进 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 后，在 DSH 的「设置 → 插件市场」搜索 `dsh-conversation-timeline` 一键安装。
+
+### 方式二：本地开发安装
+
 ```bash
-dsh plugin --profile web add file:/Users/bycall/Downloads/workbuddy/Claw/dsh-conversation-timeline
+dsh plugin --profile web add file:/path/to/dsh-conversation-timeline
 ```
 
 然后在 `~/.dsh/profiles/web/package.json` 的 `dsh.profile.bundles` 数组中加入 `"dsh-conversation-timeline"`，重启 DSH.app（或硬刷新浏览器窗口）生效。

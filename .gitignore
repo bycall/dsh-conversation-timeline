@@ -14,3 +14,6 @@ node_modules/
 
 # dsh profile install artifacts
 pnpm-lock.yaml
+
+# WorkBuddy project data (not part of the plugin)
+.workbuddy/

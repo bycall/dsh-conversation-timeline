@@ -14,7 +14,7 @@
 ## 1. 托管 GitHub
 
 ```bash
-cd /Users/bycall/Downloads/workbuddy/Claw/dsh-conversation-timeline
+cd /Users/bycall/Documents/GitHub/dsh-conversation-timeline
 # 1) 在 github.com 新建同名空仓库 dsh-conversation-timeline（不要勾选 README/gitignore）
 # 2) 替换 package.json 中 repository 字段的 bycall 为你的用户名
 # 3) 推送
@@ -22,13 +22,13 @@ git remote add origin git@github.com:bycall/dsh-conversation-timeline.git
 git push -u origin main
 ```
 
-> 本仓库已初始化并拆分为 10 个语义提交（满足门禁）。若仓库创建时已选 README/gitignore，
+> 本仓库已初始化并满足门禁（≥10 commit、≥1 天历史）。若仓库创建时已选 README/gitignore，
 > 先 `git pull --rebase origin main` 再 push。
 
 ## 2. 发布 npm（推荐，市场内一键安装体验最佳）
 
 ```bash
-cd /Users/bycall/Downloads/workbuddy/Claw/dsh-conversation-timeline
+cd /Users/bycall/Documents/GitHub/dsh-conversation-timeline
 npm login                        # 需 npm 账号
 npm publish                      # 包名 dsh-conversation-timeline（已确认未被占用）
 ```

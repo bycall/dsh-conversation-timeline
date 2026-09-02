@@ -1,6 +1,6 @@
 {
   "name": "dsh-conversation-timeline",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Conversation timeline dock bar for DeepSeek Harness: a turn-level timeline embedded above the composer, with user-prompt hover tooltips and click-to-jump back to the exact chat position.",
   "repository": {
     "type": "git",
